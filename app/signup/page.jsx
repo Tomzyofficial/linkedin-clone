@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import googleIcon from 'public/image/google-icon.PNG';
 import { useState } from "react";
-export default function signup() {
+export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <>

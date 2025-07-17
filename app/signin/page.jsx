@@ -5,7 +5,7 @@ import googleIcon from 'public/image/google-icon.PNG'
 import appleImage from 'public/image/apple-img.PNG'
 import oneTimeSignin from 'public/image/one-time-signin-img.PNG'
 import { useState } from "react";
-export default function signin() {
+export default function Signin() {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
