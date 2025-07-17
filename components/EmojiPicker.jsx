@@ -1,5 +1,5 @@
-/* import { useState } from 'react';
-import EmojiPicker from 'emoji-picker-react';
+import { useState } from "react";
+import EmojiPicker from "emoji-picker-react";
 
 const EmojiComponent = ({ selected }) => {
   const [chosenEmoji, setChosenEmoji] = useState(null);
@@ -21,4 +21,3 @@ const EmojiComponent = ({ selected }) => {
 };
 
 export default EmojiComponent;
- */

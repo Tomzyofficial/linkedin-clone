@@ -1,6 +1,6 @@
 'use client'
-import DashboardNav from "@/components/dashboardNavBar";
-import DashboardBody from "@/components/dashboardBody";
+import DashboardNav from "@/components/DashboardNavBar";
+import DashboardBody from "@/components/DashboardBody";
 
 const page = () => {
   return (

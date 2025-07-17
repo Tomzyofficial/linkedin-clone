@@ -1,93 +1,163 @@
 import Link from "next/link";
 import Image from "next/image";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
+
+  // Organize footer data into sections with headers and items
+  const footerSections = [
+    {
+      header: null,
+      items: [
+        {
+          name: "Linked",
+          icon: (
+            <Image
+              src="/image/logo.svg"
+              alt="linkedin icon"
+              width={50}
+              height={50}
+              style={{ width: "28px", height: "25px" }}
+            />
+          ),
+          href: "#",
+        },
+      ],
+    },
+    {
+      header: "General",
+      items: [
+        { label: "Sign up", href: "#" },
+        { label: "Help Center", href: "#" },
+        { label: "About", href: "#" },
+        { label: "Press", href: "#" },
+        { label: "Blog", href: "#" },
+        { label: "Careers", href: "#" },
+        { label: "Developers", href: "#" },
+      ],
+    },
+    {
+      header: "Browse LinkedIn",
+      items: [
+        { label: "Learning", href: "#" },
+        { label: "Jobs", href: "#" },
+        { label: "Salary", href: "#" },
+        { label: "Mobile", href: "#" },
+        { label: "Services", href: "#" },
+        { label: "Products", href: "#" },
+        { label: "Top Companies Hub", href: "#" },
+      ],
+    },
+    {
+      header: "Business Solutions",
+      items: [
+        { label: "Talents", href: "#" },
+        { label: "Marketing", href: "#" },
+        { label: "Sales", href: "#" },
+        { label: "Learning", href: "#" },
+      ],
+    },
+    {
+      header: "Directories",
+      items: [
+        { label: "Members", href: "#" },
+        { label: "Jobs", href: "#" },
+        { label: "Companies", href: "#" },
+        { label: "Featured", href: "#" },
+        { label: "Learning", href: "#" },
+        { label: "Posts", href: "#" },
+        { label: "Articles", href: "#" },
+        { label: "Schools", href: "#" },
+        { label: "News", href: "#" },
+        { label: "News Letter", href: "#" },
+        { label: "Services", href: "#" },
+        { label: "Products", href: "#" },
+        { label: "Advice", href: "#" },
+        { label: "People Search", href: "#" },
+      ],
+    },
+  ];
+
   return (
     <footer>
-      <div className="grid grid-cols-1 md:grid-cols-5 bg-zinc-100 mt-10 p-4">
-        <div>
-          <Link href="/" className="flex relative text-[#0A66c2] font-semibold text-2xl md:text-3xl">Linked
-            <span className="translate-y-2">
-              <Image src="/image/logo.svg" alt="linkedin icon" width={50} height={50} style={{ width: '28px', height: '25px' }}></Image>
+      <div className="flex flex-col md:flex-row bg-zinc-100 mt-10 p-4 gap-8">
+        {footerSections.map((section, idx) => (
+          <div key={idx} className="mb-6 md:mb-0 flex-1 min-w-[180px]">
+            {section.header ? (
+              <h2 className="text-lg md:text-xl font-semibold text-[#000000E6] mb-3">
+                {section.header}
+              </h2>
+            ) : null}
+            <ul>
+              {section.items.map((item, i) =>
+                item.name ? (
+                  <li key={i} className="mb-2">
+                    <Link
+                      href={item.href}
+                      className="inline-flex items-center text-[#0A66c2] font-semibold text-2xl md:text-3xl"
+                    >
+                      {item.name}
+                      <span className="ml-2">{item.icon}</span>
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={i} className="mb-2">
+                    <Link
+                      href={item.href}
+                      className="text-zinc-700 hover:text-[#0A66c2] transition text-base md:text-lg"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="bg-white py-3 px-4 flex flex-col md:flex-row items-center justify-between text-slate-800 text-sm border-t">
+        <div className="inline-flex items-center mb-2 md:mb-0">
+          <Link
+            href="/"
+            className="inline-flex items-center text-black font-semibold text-sm md:text-base"
+          >
+            Linked
+            <span className="ml-1">
+              <Image
+                src="/image/logo.svg"
+                alt="linkedin icon"
+                width={20}
+                height={20}
+                style={{ width: "10px", height: "13px" }}
+              />
             </span>
           </Link>
+          <span className="ml-2">&copy; {currentYear}</span>
         </div>
-        <div>
-          <h2 className="text-2xl font-normal text-[#000000E6] pb-2">General</h2>
-          <ul>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Sign Up</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Help Center</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">About</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Press</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Blog</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Careers</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Developers</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-2xl font-normal text-[#000000E6] pb-2">Browse LinkedIn</h2>
-          <ul>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Learning</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Jobs</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Salary</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Mobile</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Services</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Products</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Top Companies Hub</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-2xl font-normal text-[#000000E6] pb-2">Business Solutions</h2>
-          <ul>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Talent</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Marketing</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Sales</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Learning</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-2xl font-normal text-[#000000E6] pb-2">Directories</h2>
-          <ul>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Members</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Jobs</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Companies</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Featured</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Learning</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Posts</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Articles</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Schools</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">News</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">News Letter</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Services</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Products</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">Advice</Link></li>
-            <li><Link href="#" className="text-slate-800 hover:text-[#0A66c2] hover:transition hover:underline">People Search</Link></li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <ul className="flex flex-wrap space-x-2 bg-white py-3">
-          <li>
-            <Link href="/" className="flex relative text-black font-semibold text-sm md:text-sm">Linked
-              <span className="translate-y-1">
-                <Image src="/image/logo.svg" alt="linkedin icon" width={20} height={20} style={{ width: '10px', height: '13px' }}></Image>
-              </span>
+        <div className="flex flex-wrap gap-x-3">
+          {[
+            "About",
+            "Accessibility",
+            "User Agreement",
+            "Privacy Policy",
+            "Cookie Policy",
+            "Copyright Policy",
+            "Brand Policy",
+            "Guest Controls",
+            "Community",
+            "Guidelines",
+            "Languages",
+          ].map((label) => (
+            <Link
+              key={label}
+              href="#"
+              className="text-slate-800 hover:text-[#0A66c2] hover:underline transition"
+            >
+              {label}
             </Link>
-          </li>
-          <li><p className="text-slate-800 text-sm">&copy; {currentYear} </p></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">About</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">Accessibility</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">User Agreement</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">Privacy Policy</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">Cookie Policy</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">Copyright Policy</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">Brand Policy</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">Guest Controls</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">Community</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">Guidelines</Link></li>
-          <li><Link href="#" className="text-slate-800 text-sm hover:text-[#0A66c2] hover:transition hover:underline">Languages</Link></li>
-        </ul>
+          ))}
+        </div>
       </div>
     </footer>
-  )
+  );
 }
