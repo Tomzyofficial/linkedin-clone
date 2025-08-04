@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
-// import dynamic from "next/dynamic";
 import Link from "next/link";
 import AddToFeed from "@/components/AddToFeed";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import EventNoteIcon from "@mui/icons-material/EventNote";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import Modal from "@/components/Modal";
@@ -13,224 +14,179 @@ import DashboardNav from "@/components/ui/DashboardNavBar";
 import UserPosts from "@/components/posts/UsersPosts";
 
 export default function DashboardBody() {
-  // modal useState
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [textArea, setTextArea] = useState("");
 
-  // get the contents for each add to your feed per user
-  const addtoYourFeed = AddToFeed.map((eachUser) => (
-    <div key={eachUser.id} className="flex space-x-4">
-      <div className="pb-8">
-        <Link href="#">
-          <Image
-            src={eachUser.image}
-            alt="user's image"
-            width={100}
-            height={100}
-            style={{
-              borderRadius: eachUser.borderRadius,
-              width: eachUser.width,
-              height: eachUser.height,
-            }}
-          ></Image>
-        </Link>
-      </div>
-      <div className="text-sm">
-        <h2 className="text-[#000000E9]">{eachUser.name}</h2>
-        <h3 className="text-[#00000099]">{eachUser.title}</h3>
-        <button className="font-semibold text-[15px] text-[#00000099] border border-[#000000E9] px-4 py-[5px] rounded-full">
-          {eachUser.follow}
-        </button>
-      </div>
-    </div>
-  ));
+  const leftASide = [
+    { href: "#", label: "Profile viewers", badge: 9 },
+    { href: "#", label: "Post impressions", badge: 37 },
+    {
+      href: "#",
+      label: "Access exclusive tools & insights",
+      badge: "",
+    },
+    {
+      href: "#",
+      label: " My items",
+      badge: (
+        <Image
+          src="/images/my-items-icon.PNG"
+          width={100}
+          height={100}
+          alt="my items"
+          style={{ width: "auto", height: "auto" }}
+        ></Image>
+      ),
+    },
+  ];
+
+  const secondAside = [
+    {
+      href: "#",
+      label: "BYU-Pathway Worldwide Alu...",
+      badge: (
+        <Image
+          src="/images/alumini-icon.PNG"
+          alt="alumini icon"
+          width={20}
+          height={20}
+          style={{ width: "10px", height: "10px" }}
+        ></Image>
+      ),
+    },
+    {
+      href: "#",
+      label: "JavaScript",
+      badge: (
+        <Image
+          src="/images/alumini-icon.PNG"
+          alt="alumini icon"
+          width={20}
+          height={20}
+          style={{ width: "10px", height: "10px" }}
+        ></Image>
+      ),
+    },
+  ];
+
+  const thirdAside = [
+    {
+      href: "#",
+      label: "Groups",
+      badge: <NewspaperIcon sx={{ fontSize: "15px" }} />,
+    },
+    {
+      href: "#",
+      label: "JavaScript",
+      badge: <EventNoteIcon sx={{ fontSize: "15px" }} />,
+    },
+    {
+      href: "#",
+      label: "See all",
+      badge: "",
+    },
+  ];
 
   return (
     <>
       <DashboardNav />
       <section className="bg-[#f4f2ee]">
-        <main className="pt-[20px]">
-          <div className="md:flex flex-col lg:flex-row md:justify-around md:mx-8">
-            {/* left contents */}
-            <div className="md:w-[30%] lg:w-[19%]">
-              <div className="bg-white rounded-lg h-fit border-[1px] border-slate-200">
-                <div className="divide-y">
-                  <div>
-                    <div className="bg-[url('/images/1.png')] bg-cover h-[60px] rounded-t-lg">
-                      <Image
-                        src="/images/profile-img.png"
-                        alt="profile-pic"
-                        className="mx-auto rounded-full w-20 h-20 translate-y-8 border-2 border-white"
-                        sizes="sm"
-                        width={100}
-                        height={100}
-                      ></Image>
-                    </div>
-                    <div className="mt-[60px] pb-4 text-center text-sm">
-                      <h3 className="font-bold">Chukwuebuka Ibeh</h3>
-                      <h5 className="text-xs">Software Developer</h5>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs py-[10px]">
-                      <Link
-                        href="#"
-                        className="block px-4 py-[2px] hover:bg-stone-200 text-[#000000099]"
-                      >
-                        Profile viewers{" "}
-                        <span className="float-right text-[#0A66c2]">9</span>
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-4 py-[2px] hover:bg-stone-200"
-                      >
-                        Post impressions
-                        <span className="float-right text-[#0A66c2]">37</span>
-                      </Link>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs py-[10px]">
-                      <Link
-                        href="#"
-                        className="block px-4 py-[2px] hover:bg-stone-200 text-[#00000099]"
-                      >
-                        Access exclusive tools & insights
-                        <span className="block text-[#000000E9] font-semibold">
-                          Try Premium for free
-                        </span>
-                      </Link>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs py-[10px]">
-                      <Link
-                        href="#"
-                        className="block px-4 py-[2px] hover:bg-stone-200 text-[#000000E9] font-semibold"
-                      >
-                        <span className="float-left pr-2">
-                          <Image
-                            src="/images/my-items-icon.png"
-                            width={100}
-                            height={100}
-                            alt="my items"
-                            style={{ width: "auto", height: "auto" }}
-                          ></Image>
-                        </span>
-                        My items
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+        <div className="flex flex-col md:flex-row pt-8 mx-auto max-w-6xl gap-4">
+          {/* left contents */}
+          <div className="flex-shrink-0 lg:min-w-1/5">
+            <div className="bg-white rounded-lg h-fit border-[1px] border-slate-200">
+              <div className="bg-[url('/images/1.PNG')] bg-cover h-[13vh] rounded-t-lg">
+                <Image
+                  src="/images/profile-img.PNG"
+                  alt="profile-pic"
+                  className="ml-4 lg:mx-auto rounded-full w-20 h-20 translate-y-13 lg:translate-y-8 border-2 border-white"
+                  sizes="sm"
+                  width={100}
+                  height={100}
+                ></Image>
               </div>
-              <div className="bg-white rounded-lg h-fit border-[1px] mt-2 border-slate-200">
-                <div>
-                  <div className="text-xs py-[10px]">
-                    <p className="group block px-4 py-[2px] text-[#000000099]">
-                      Recent
-                      <span className="float-right hidden md:block group-hover:block">
-                        <ArrowDropDownIcon sx={{ fontSize: "20px" }} />
-                      </span>
-                    </p>
-                  </div>
-                  <div className="text-xs">
-                    <Link
-                      href="#"
-                      className="block pl-4 py-[2px] hover:bg-stone-200 text-[#00000099]"
-                    >
-                      <span className="float-left pe-2">
-                        <Image
-                          src="/images/alumini-icon.png"
-                          alt="alumini icon"
-                          width={20}
-                          height={20}
-                          style={{ width: "10px", height: "10px" }}
-                        ></Image>
-                      </span>
-                      BYU-Pathway Worldwide Alu...
-                    </Link>
-                    <Link
-                      href="#"
-                      className="block pl-4 py-[2px] hover:bg-stone-200 text-[#00000099]"
-                    >
-                      <span className="float-left pe-2">
-                        <Image
-                          src="/images/alumini-icon.png"
-                          alt="alumini icon"
-                          width={20}
-                          height={20}
-                          style={{ width: "10px", height: "10px" }}
-                        ></Image>
-                      </span>
-                      JavaScript
-                    </Link>
-                  </div>
-                  <div className="text-xs py-[20px]">
-                    <Link
-                      href="#"
-                      className="group transition hover:underline block px-4 py-[2px] text-[#0A66c2] font-semibold"
-                    >
-                      Groups
-                      <span className="float-right hidden md:block group-hover:block">
-                        <ArrowDropDownIcon sx={{ fontSize: "20px" }} />
-                      </span>
-                    </Link>
-                    <div className="text-xs py-[10px]">
-                      <Link
-                        href="#"
-                        className="block pl-4 py-[2px] hover:bg-stone-200 text-[#00000099]"
-                      >
-                        <span className="float-left pe-2">
-                          <Image
-                            src="/images/alumini-icon.png"
-                            alt="alumini icon"
-                            width={20}
-                            height={20}
-                            style={{ width: "10px", height: "10px" }}
-                          ></Image>
-                        </span>
-                        BYU-Pathway Worldwide Alu...
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block pl-4 py-[2px] hover:bg-stone-200 text-[#00000099]"
-                      >
-                        <span className="float-left pe-2">
-                          <Image
-                            src="/images/alumini-icon.png"
-                            alt="alumini icon"
-                            width={20}
-                            height={20}
-                            style={{ width: "10px", height: "10px" }}
-                          ></Image>
-                        </span>
-                        JavaScript
-                      </Link>
-                      <Link
-                        href="#"
-                        className="mt-2 block pl-8 text-[#00000099 font-semibold] py-[2px] hover:bg-stone-200 text-[#00000099]"
-                      >
-                        See all
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+              <div className="mt-[60px] pb-4 text-center text-sm">
+                <h3 className="font-bold">Chukwuebuka Ibeh</h3>
+                <h5 className="text-xs">Software Developer</h5>
+              </div>
+
+              <div className="text-xs py-[10px]">
+                {leftASide.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    className="flex items-center justify-between px-4 py-[2px] hover:bg-stone-200 text-[#000000099]"
+                  >
+                    {item.label}
+                    <span className=" text-[#0A66c2]">{item.badge}</span>
+                  </Link>
+                ))}
               </div>
             </div>
 
-            {/* center contents*/}
-            <div className="md:w-[65%] lg:w-[50%]">
-              <div className="bg-white rounded-lg h-fit border-[1px] pb-2 border-slate-200 space-x-4">
+            <div className="bg-white rounded-lg h-fit border-[1px] mt-2 border-slate-200">
+              <div className="text-xs py-[10px] flex justify-between px-2 items-center">
+                <p className="group block py-[2px] text-[#000000099]">Recent</p>
+                <span className="hidden md:block group-hover:block">
+                  <ArrowDropDownIcon sx={{ fontSize: "20px" }} />
+                </span>
+              </div>
+
+              <div className="text-xs">
+                {secondAside.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    className="flex gap-2 items-center pl-4 py-[2px] hover:bg-stone-200 text-[#00000099]"
+                  >
+                    <span>{item.badge}</span>
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="text-xs py-[20px]">
+                <Link
+                  href="#"
+                  className="flex justify-between items-center hover:underline block px-4 py-[2px] text-[#0A66c2] font-semibold"
+                >
+                  Groups
+                  <span className="hidden md:block">
+                    <ArrowDropDownIcon sx={{ fontSize: "20px" }} />
+                  </span>
+                </Link>
+
+                <div className="text-xs py-[10px]">
+                  {thirdAside.map((item, idx) => (
+                    <Link
+                      href={item.href}
+                      key={idx}
+                      className="flex items-center gap-2 pl-4 py-[2px] hover:bg-stone-200 text-[#00000099]"
+                    >
+                      <span>{item.badge}</span>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* center contents*/}
+          <div className="flex flex-col gap-4 lg:flex-row w-full">
+            <div className="w-full flex-1">
+              <div className="bg-white rounded-lg w-full h-fit border-[1px] pb-2 border-slate-200 space-x-4">
                 <div className="flex space-x-4 p-4">
                   <Link href="#">
                     <Image
-                      src="/images/profile-img.png"
+                      src="/images/profile-img.PNG"
                       alt="profile image"
                       width={100}
                       height={100}
                       style={{
                         width: "4rem",
-                        height: "3.5rem",
+                        flexShrink: 0,
+                        height: "3.1rem",
                       }}
                       className="rounded-full w-auto"
                     ></Image>
@@ -242,7 +198,7 @@ export default function DashboardBody() {
                     Start a post, try writing with AI
                   </Button>
 
-                  {/* modal */}
+                  {/* Modal */}
 
                   {isModalOpen && (
                     <Modal
@@ -252,7 +208,7 @@ export default function DashboardBody() {
                       <div className="flex justify-between items-center">
                         <Button className="flex space-x-2 items-center justify-center p-4 rounded-xl hover:bg-stone-200">
                           <Image
-                            src="/images/profile-img.png"
+                            src="/images/profile-img.PNG"
                             width={100}
                             height={100}
                             alt="profile image"
@@ -307,7 +263,7 @@ export default function DashboardBody() {
                     <button className="flex hover:bg-stone-200 transition p-4 rounded-lg">
                       <span className="pr-2">
                         <Image
-                          src="/images/gallery-icon.png"
+                          src="/images/gallery-icon.PNG"
                           width={100}
                           height={100}
                           alt="gallery icon"
@@ -324,7 +280,7 @@ export default function DashboardBody() {
                     >
                       <span className="pr-2">
                         <Image
-                          src="/images/events-icon.png"
+                          src="/images/events-icon.PNG"
                           width={100}
                           height={100}
                           alt="events icon"
@@ -341,7 +297,7 @@ export default function DashboardBody() {
                     >
                       <span className="pr-2">
                         <Image
-                          src="/images/article-icon.png"
+                          src="/images/article-icon.PNG"
                           alt="article icon"
                           width={100}
                           height={100}
@@ -356,15 +312,16 @@ export default function DashboardBody() {
               {/* posts */}
               <div className="mt-4">{<UserPosts />}</div>
             </div>
+
             {/* right contents */}
-            <div className="space-y-4 w-full lg:w-[25%]">
+            <div className="space-y-4 w-full lg:w-[30%]">
               <div className="bg-white p-4 rounded-lg h-fit border-[1px] border-slate-200">
                 <div>
                   <h2 className="pb-4">
                     Add to your feed{" "}
                     <span className="float-right">
                       <Image
-                        src="/images/info-icon.png"
+                        src="/images/info-icon.PNG"
                         alt="info icon"
                         width={100}
                         height={100}
@@ -372,7 +329,33 @@ export default function DashboardBody() {
                       ></Image>
                     </span>
                   </h2>
-                  <span className="clear-right">{addtoYourFeed}</span>
+
+                  {AddToFeed.map((eachUser) => (
+                    <div key={eachUser.id} className="flex space-x-4">
+                      <div className="pb-8">
+                        <Link href="#">
+                          <Image
+                            src={eachUser.image}
+                            alt="user's image"
+                            width={100}
+                            height={100}
+                            style={{
+                              borderRadius: eachUser.borderRadius,
+                              width: eachUser.width,
+                              height: eachUser.height,
+                            }}
+                          ></Image>
+                        </Link>
+                      </div>
+                      <div className="text-sm">
+                        <h2 className="text-[#000000E9]">{eachUser.name}</h2>
+                        <h3 className="text-[#00000099]">{eachUser.title}</h3>
+                        <button className="font-semibold text-[15px] text-[#00000099] border border-[#000000E9] px-4 py-[5px] rounded-full">
+                          {eachUser.follow}
+                        </button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               {/* see who's hiring */}
@@ -380,12 +363,11 @@ export default function DashboardBody() {
                 <div className="sticky top-0">
                   <div>
                     <Image
-                      src="/images/whos-hiring.png"
+                      src="/images/whos-hiring.PNG"
                       alt="whos-hiring"
-                      priority
-                      width={200}
-                      height={200}
-                      style={{ width: "100%", height: "100%" }}
+                      width={500}
+                      height={500}
+                      className="w-full"
                     ></Image>
                   </div>
                   <div className="mt-4">
@@ -423,7 +405,7 @@ export default function DashboardBody() {
               </div>
             </div>
           </div>
-        </main>
+        </div>
       </section>
     </>
   );

@@ -1,7 +1,7 @@
 const AddToFeed = [
   {
     id: "1",
-    image: "/images/1.png",
+    image: "/images/1.PNG",
     width: "50px",
     height: "50px",
     borderRadius: "50%",
@@ -11,7 +11,7 @@ const AddToFeed = [
   },
   {
     id: "2",
-    image: "/images/2.png",
+    image: "/images/2.PNG",
     width: "50px",
     height: "50px",
     borderRadius: "50%",
@@ -21,7 +21,7 @@ const AddToFeed = [
   },
   {
     id: "3",
-    image: "/images/9.png",
+    image: "/images/9.PNG",
     width: "50px",
     height: "50px",
     borderRadius: "50%",
@@ -31,7 +31,7 @@ const AddToFeed = [
   },
   {
     id: "4",
-    image: "/images/8.png",
+    image: "/images/8.PNG",
     width: "50px",
     height: "50px",
     borderRadius: "50%",

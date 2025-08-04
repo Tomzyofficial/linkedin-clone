@@ -98,7 +98,7 @@ export default function Signin() {
               <span>
                 <Image
                   alt="One-time link"
-                  src="/images/link_line.png"
+                  src="/images/link_line.PNG"
                   width={100}
                   height={100}
                   className="w-auto h-auto"
