@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* body {
+  overflow-x: hidden;
+} */
+
+header,
+main,
+section {
+  padding: 10px;
+}
+
+/* active link */
+.active {
+  border-bottom: 2px solid black;
+}
+
+.active-indicator {
+  position: absolute;
+  top: 10px;
+  transform: translateX(20px);
+  border: 4px solid red;
+  padding: 10p;
+  border-radius: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+/*
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+ */
